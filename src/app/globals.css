@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   LabLink design tokens (docs/DESIGN.md 3.2 - 3.6).
+   Colour is never the only carrier of meaning: badges pair colour with an icon
+   and a text label, and every status is written out.
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.25;
+    @apply font-semibold;
+  }
+
+  :focus-visible {
+    outline: 2px solid #323232;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: #323232;
+    color: #f3eeea;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply absolute left-2 top-2 z-50 -translate-y-24 rounded-sm bg-ink px-4 py-2 text-surface;
+  }
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+
+  .card {
+    @apply rounded-md border border-line bg-surface;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-sm border px-4 py-2 text-sm font-medium;
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    @apply cursor-not-allowed opacity-60;
+  }
+  .btn-primary {
+    @apply border-ink bg-ink text-surface;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: #1f1f1f;
+  }
+  .btn-secondary {
+    @apply border-muted bg-surface text-ink;
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background-color: #e9e1db;
+  }
+  .btn-ghost {
+    @apply border-transparent bg-transparent text-ink underline underline-offset-4;
+  }
+  .btn-danger {
+    @apply border-danger bg-danger text-white;
+  }
+  .btn-sm {
+    @apply min-h-[36px] px-3 py-1 text-xs;
+  }
+
+  .input,
+  .select,
+  .textarea {
+    @apply w-full rounded-sm border border-muted bg-surface px-3 py-2 text-base text-ink;
+    min-height: 44px;
+  }
+  .textarea {
+    min-height: 96px;
+  }
+
+  .label {
+    @apply mb-1 block text-sm font-medium text-ink;
+  }
+
+  .hint {
+    @apply mt-1 text-xs text-muted;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 text-xs font-medium;
+  }
+  .badge-ink {
+    @apply border-muted bg-surface text-ink;
+  }
+  .badge-success {
+    @apply border-success bg-[#e6efe6] text-success;
+  }
+  .badge-warning {
+    @apply border-warning bg-[#f4ecdd] text-warning;
+  }
+  .badge-danger {
+    @apply border-danger bg-[#f4e3e3] text-danger;
+  }
+  .badge-info {
+    @apply border-info bg-[#e3ebf4] text-info;
+  }
+  .badge-muted {
+    @apply border-line bg-[#eae2dc] text-muted;
+  }
+
+  .link {
+    @apply text-info underline underline-offset-4;
+  }
+
+  .table {
+    @apply w-full text-left text-sm;
+  }
+  .table caption {
+    @apply mb-2 text-left text-sm text-muted;
+  }
+  .table th {
+    @apply border-b border-line px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted;
+  }
+  .table td {
+    @apply border-b border-line px-3 py-3 align-top;
+  }
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .nav-link {
+    @apply flex min-h-[44px] items-center gap-3 rounded-sm px-3 py-2 text-sm font-medium text-ink;
+  }
+  .nav-link:hover {
+    background-color: #eae2dc;
+  }
+  .nav-link[aria-current="page"] {
+    @apply border border-line bg-surface;
+  }
+
+  .grid-slot {
+    @apply flex min-h-[44px] w-full items-center justify-between gap-2 rounded-sm border border-line bg-surface px-3 py-2 text-left text-xs;
+  }
+  .grid-slot[data-selected="true"] {
+    @apply border-ink bg-ink text-surface;
+  }
+  .grid-slot small {
+    @apply text-[11px];
+  }
+  .grid-slot[data-selected="true"] small {
+    color: #e9e1db;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

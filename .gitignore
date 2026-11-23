@@ -1,0 +1,25 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.local
+.env.*.local
+.dev.vars
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+npm-debug.log*
+/freebuff-sites-build/
+/freebuff.wrangler.jsonc
+/freebuff.open-next.config.ts
+
+/.open-next/
+/.wrangler/
+
+# Verification screenshots
+/artifacts/
